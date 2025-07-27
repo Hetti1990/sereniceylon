@@ -70,6 +70,7 @@ class Photo(db.Model):
     activity_id = db.Column(db.Integer, db.ForeignKey('itinerary_activity.id'), nullable=True)
     image_url = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=True)
+    category = db.Column(db.String(100), nullable=True)
 
 class Pricing(db.Model):
     id = db.Column(db.Integer, primary_key=True)
