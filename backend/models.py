@@ -9,18 +9,17 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
     role = db.Column(db.String(50), nullable=False)
 
-class Destination(db.Model):
+class Location(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    country = db.Column(db.String(100), nullable=False)
     city = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=True)
+    country = db.Column(db.String(100), nullable=False)
 
 class Sightseeing(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    destination_id = db.Column(db.Integer, db.ForeignKey('destination.id'), nullable=False)
+    location_id = db.Column(db.Integer, db.ForeignKey('location.id'), nullable=False)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
-    is_paid = db.Column(db.Boolean, default=False)
+    category = db.Column(db.String(100), nullable=True)
 
 class Hotel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
