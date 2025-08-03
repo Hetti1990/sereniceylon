@@ -14,6 +14,7 @@ class Destination(db.Model):
     country = db.Column(db.String(100), nullable=False)
     city = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
+    currency_code = db.Column(db.String(10), db.ForeignKey('currency.code'), nullable=False)
 
 class Sightseeing(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,6 +22,7 @@ class Sightseeing(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
     is_paid = db.Column(db.Boolean, default=False)
+    cost = db.Column(db.Float, nullable=True)
 
 class Hotel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,6 +30,7 @@ class Hotel(db.Model):
     name = db.Column(db.String(100), nullable=False)
     address = db.Column(db.String(200), nullable=False)
     rate = db.Column(db.Float, nullable=False)
+    currency = db.Column(db.String(10), nullable=False)
     meal_basis = db.Column(db.String(100), nullable=True)
     room_basis = db.Column(db.String(100), nullable=True)
     room_type_validity = db.Column(db.String(100), nullable=True)
