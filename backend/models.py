@@ -61,8 +61,13 @@ class ItineraryActivity(db.Model):
     sight_id = db.Column(db.Integer, db.ForeignKey('sightseeing.id'), nullable=True)
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotel.id'), nullable=True)
     transport_id = db.Column(db.Integer, db.ForeignKey('transport.id'), nullable=True)
-    entrance_fee = db.Column(db.Float, nullable=True)
     pax = db.Column(db.Integer, nullable=True)
+
+class EntranceFee(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sightseeing_id = db.Column(db.Integer, db.ForeignKey('sightseeing.id'), nullable=False)
+    cost = db.Column(db.Float, nullable=False)
+    currency = db.Column(db.String(10), nullable=False)
 
 class Photo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
