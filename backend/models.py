@@ -38,8 +38,12 @@ class Transport(db.Model):
     from_location = db.Column(db.String(100), nullable=False)
     to_location = db.Column(db.String(100), nullable=False)
     mode = db.Column(db.String(100), nullable=False)
-    cost = db.Column(db.Float, nullable=False)
+    distance = db.Column(db.Float, nullable=True)
+    pricing_model = db.Column(db.String(50), nullable=False, default='trip')  # 'trip' or 'per_person'
+    trip_cost = db.Column(db.Float, nullable=True)
+    per_person_cost = db.Column(db.Float, nullable=True)
     currency = db.Column(db.String(10), nullable=False)
+    driver_bata = db.Column(db.Float, nullable=True)
 
 class Itinerary(db.Model):
     id = db.Column(db.Integer, primary_key=True)
